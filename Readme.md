@@ -1,0 +1,1 @@
+This is a basic example how one can adress multiple AWS accounts with Terraform - without duplicating to much of your codebase.
