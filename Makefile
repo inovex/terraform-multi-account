@@ -29,7 +29,7 @@ endif
 	@if [ -e .terraform/terraform.tfstate ]; then rm .terraform/terraform.tfstate; fi;
 	$(eval TF_ENV_VARS := $(TF_ENV_VARS) AWS_PROFILE=$(AWS_ENV) )
 	@echo "# TF_ENV_VARS: $(TF_ENV_VARS)"
-	$(TF_ENV_VARS) terraform init -backend-config="bucket=akoehler-$(PREFIX)-state" -backend-config="dynamodb_table=akoehler-$(PREFIX)-state-lock" -backend-config="key=$(S3_PATH)/terraform.tfstate"
+	$(TF_ENV_VARS) terraform init -backend-config="bucket=$(PREFIX)-state" -backend-config="dynamodb_table=$(PREFIX)-state-lock" -backend-config="key=$(S3_PATH)/terraform.tfstate"
 
 tf_vars:
 	$(eval TF_OPTIONS :=  $(TF_OPTIONS) -var aws-account=$(AWS_ENV))
